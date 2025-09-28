@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  application:
+    build: ./application
+    environment:
+      - PORT=3000
+      - BG_COLOR=green
+    ports:
+      - "3000:3000"
+
+  nginx:
+    build: ./nginx
+    environment:
+      - BASIC_AUTH_PASSWORD=12345
+    ports:
+      - "80:80"
+    depends_on:
+      - application
