@@ -1,10 +1,14 @@
 services:
   application-dev:
-    build: ./app
+    build:
+      context: ./application
+      dockerfile: Dockerfile
     container_name: application-dev
-    environment:
-      - PORT=3000
-      - BG_COLOR=green
+    command: ["node", "app.js"]
+    volumes:
+      - ./application:/usr/src/app
+    ports:
+      - "3001:3000"
     networks:
       - testnet
 
