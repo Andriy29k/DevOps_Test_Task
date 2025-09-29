@@ -3,7 +3,7 @@ version: "3.8"
 services:
   application:
     build: ./app
-    container_name: application-dev
+    container_name: application-prod
     environment:
       - PORT=3000
       - BG_COLOR=green
