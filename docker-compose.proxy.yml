@@ -6,6 +6,7 @@ services:
     container_name: nginx-proxy
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
+      - /home/azureuser/tls:/tls
     ports:
       - "80:80"
       - "443:443"
