@@ -14,5 +14,5 @@ services:
       - testnet
 
 networks:
-  appnet:
+  testnet:
     external: true
