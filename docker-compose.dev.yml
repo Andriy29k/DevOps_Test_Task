@@ -17,4 +17,4 @@ services:
     depends_on:
       - application
     volumes:
-      - /home/azureuser/tls:/tls
+      - /home/azureuser/dev_tls:/dev_tls
