@@ -1,0 +1,40 @@
+services:
+  application-dev:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    container_name: application-dev
+    command: ["node", "app.js"]
+    environment:
+      - BG_COLOR=green
+    networks:
+      - testnet
+
+  application-prod:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    container_name: application-prod
+    command: ["node", "app.js"]
+    environment:
+      - BG_COLOR=purple
+    networks:
+      - testnet
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./tls:/tls
+    depends_on:
+      - application-prod
+      - application-dev
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - testnet
+
+networks: 
+  testnet:
