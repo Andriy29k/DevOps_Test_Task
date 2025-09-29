@@ -1,5 +1,5 @@
 services:
-  application:
+  application-dev:
     build: ./app
     container_name: application-dev
     environment:
