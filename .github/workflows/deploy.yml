@@ -25,25 +25,12 @@ jobs:
           path: ansible
           token: ${{ secrets.TOKEN }}
         
-      - name: Debug Ansible repository contents
-        run: |
-          ls -la ansible/
-          ls -la ansible/roles/
-          echo "Checking for playbook.yaml"
-          if [ -f ansible/playbook.yaml ]; then echo "playbook.yaml found"; else echo "playbook.yaml NOT found"; fi
-          if [ -f ansible/playbook.yml ]; then echo "playbook.yml found"; else echo "playbook.yml NOT found"; fi
-
       - name: Create temporary TLS certificate files
         run: |
           mkdir -p ansible/roles/copy_tls/files/tls
           echo "${{ secrets.TLS_CERT_PEM }}" > ansible/roles/copy_tls/files/tls/cert.pem
           echo "${{ secrets.TLS_KEY_PEM }}" > ansible/roles/copy_tls/files/tls/key.pem
           chmod 600 ansible/roles/copy_tls/files/tls/*
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Install Ansible on runner
         run: |
