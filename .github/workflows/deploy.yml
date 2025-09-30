@@ -40,11 +40,15 @@ jobs:
           sudo apt update
           sudo apt install -y ansible
 
-      - name: Copy Ansible files to server
+      - name: Create SSH config
         run: |
-          ssh -o StrictHostKeyChecking=no azureuser@134.33.64.215 "mkdir -p ~/ansible"
-          scp -r ansible/* azureuser@134.33.64.215:~/ansible
+          echo "${{ secrets.SSH_CONFIG }}" > ansible/ssh_config.conf
 
-      - name: Run Ansible Playbook on server
+
+      - name: Create Inventory file
         run: |
-          ssh -o StrictHostKeyChecking=no azureuser@134.33.64.215 "cd ~/ansible && ansible-playbook playbook.yml -i inventory.yml"
+          echo "${{ secrets.INVENTORY }}" > ansible/inventory.ini
+
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook ansible/playbook.yml -i ansible/inventory.yml
