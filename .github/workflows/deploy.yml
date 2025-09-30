@@ -52,6 +52,7 @@ jobs:
 
       - name: Create SSH config
         run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/test.pem
           echo "${{ secrets.SSH_CONFIG }}" > ansible/ssh_config.conf
 
 
