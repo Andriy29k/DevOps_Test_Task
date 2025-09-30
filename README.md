@@ -5,8 +5,8 @@ Simple SPA Node JS application with Hello on main display, background color chan
 
 # Local Deployment
     
-    1. [Install Docker Link][https://docs.docker.com/engine/install]
-    2. In root of repo run command: '''docker compose up -d --build'''
+1. [Install Docker Link](https://docs.docker.com/engine/install).
+2. In root of repo run command: ***docker compose up -d --build***
 
 
 
