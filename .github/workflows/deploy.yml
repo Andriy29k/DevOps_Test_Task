@@ -24,6 +24,14 @@ jobs:
           ref: main
           path: ansible
           token: ${{ secrets.TOKEN }}
+        
+      - name: Debug Ansible repository contents
+        run: |
+          ls -la ansible/
+          ls -la ansible/roles/
+          echo "Checking for playbook.yaml"
+          if [ -f ansible/playbook.yaml ]; then echo "playbook.yaml found"; else echo "playbook.yaml NOT found"; fi
+          if [ -f ansible/playbook.yml ]; then echo "playbook.yml found"; else echo "playbook.yml NOT found"; fi
 
       - name: Create temporary TLS certificate files
         run: |
