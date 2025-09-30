@@ -20,7 +20,7 @@ jobs:
       - name: Checkout Ansible repository
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/Andriy29k/Ansible_to_test_task.git
+          repository: Andriy29k/Ansible_to_test_task.git
           ref: main
           path: ansible
           token: ${{ secrets.TOKEN }}
