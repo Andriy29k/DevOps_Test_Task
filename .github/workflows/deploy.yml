@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - experiments
   pull_request:
     branches:
       - dev
