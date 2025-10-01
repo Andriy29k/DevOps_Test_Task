@@ -1,0 +1,15 @@
+services:
+  application-prod:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    container_name: application-prod
+    command: ["node", "app.js"]
+    environment:
+      - BG_COLOR=purple
+    networks:
+      - testnet
+
+networks:
+  testnet:
+    external: true
