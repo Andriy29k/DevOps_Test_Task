@@ -62,4 +62,4 @@ jobs:
           AUTH_ENTRY: ${{ secrets.AUTH_ENTRY }}
         run: |
            ansible-playbook -i ansible/inventory.ini \
-            ansible/playbook.yaml -e "AUTH_ENTRY=${{ secrets.AUTH_ENTRY }}"
+            ansible/playbook.yaml -e "NGINX_AUTH_ENTRY=${{ secrets.AUTH_ENTRY }}"
