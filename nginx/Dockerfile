@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
-RUN apk add --no-cache apache2-utils openssl bash
-
-COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
+RUN <<EOF
+    apk add --no-cache apache2-utils openssl bash
+    shtpasswd -c /etc/nginx/.htpasswd andriy29k
+    echo 12345
+EOF

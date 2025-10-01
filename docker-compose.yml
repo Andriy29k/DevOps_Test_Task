@@ -22,7 +22,9 @@ services:
       - testnet
 
   nginx:
-    image: nginx:alpine
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     container_name: nginx-proxy
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
